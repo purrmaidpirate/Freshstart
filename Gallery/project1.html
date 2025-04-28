@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Title - Ranjani Ramakrishnan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            cursor: url('cursor.png'), auto;
+            background-color: white;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Left sidebar styling - same as main page for consistency */
+        .sidebar {
+            width: 350px;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+        
+        .sidebar h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .back-link {
+            display: block;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        /* Right content area */
+        .project-content {
+            margin-left: 350px;
+            padding: 2rem;
+            width: calc(100% - 350px);
+        }
+        
+        /* Project details styling */
+        .project-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-info {
+            margin-bottom: 2rem;
+        }
+        
+        .project-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        
+        .project-info p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .project-info ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+        
+        .project-info li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-images {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .project-images img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+        }
+        
+        /* Background grid like the main page */
+        .project-content::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 350px;
+            z-index: -1;
+            background-image: 
+                linear-gradient(to right, #000 1px, transparent 1px),
+                linear-gradient(to bottom, #000 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: 0 0;
+        }
+        
+        @media (max-width: 900px) {
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 280px;
+            }
+            
+            .project-content {
+                margin-left: 280px;
+                width: calc(100% - 280px);
+            }
+            
+            .project-content::before {
+                left: 280px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            
+            .project-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .project-content::before {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+            <h1>Ranjani Ramakrishnan</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, diam eu ultricies hendrerit, tortor nisl luctus mauris, nec tincidunt arcu nisi sed lectus.</p>
+        </div>
+        
+        <!-- Project Content -->
+        <div class="project-content">
+            <h1 class="project-title">Project Title</h1>
+            
+            <div class="project-details">
+                <div class="project-info">
+                    <h2>About This Project</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas euismod, nisi vel tincidunt ultricies, nisl nisl aliquam nisl, nec lacinia nisl nisi vel nisl. Sed tincidunt, diam eu ultricies hendrerit, tortor nisl luctus mauris, nec tincidunt arcu nisi sed lectus.</p>
+                    
+                    <h2>Project Details</h2>
+                    <ul>
+                        <li><strong>Date:</strong> January 2025</li>
+                        <li><strong>Client:</strong> Client Name</li>
+                        <li><strong>Role:</strong> Designer / Developer</li>
+                        <li><strong>Technologies:</strong> HTML, CSS, JavaScript</li>
+                    </ul>
+                    
+                    <h2>The Challenge</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Maecenas euismod, nisi vel tincidunt ultricies, nisl nisl aliquam nisl, nec lacinia nisl nisi vel nisl.</p>
+                    
+                    <h2>The Solution</h2>
+                    <p>Sed tincidunt, diam eu ultricies hendrerit, tortor nisl luctus mauris, nec tincidunt arcu nisi sed lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+                </div>
+                
+                <div class="project-images">
+                    <img src="project_image1.jpg" alt="Project Image 1">
+                    <img src="project_image2.jpg" alt="Project Image 2">
+                    <img src="project_image3.jpg" alt="Project Image 3">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

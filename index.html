@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranjani Ramakrishnan - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Custom Cursor Styles */
+        body {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            cursor: url('cursor.png'), auto;
+        }
+        
+        /* For clickable elements, you can optionally use a different cursor state */
+        a, .gallery-item {
+            cursor: url('cursor.png'), pointer;
+        }
+        
+        /* Hide the custom cursor div since we're using CSS cursor property */
+        .custom-cursor {
+            display: none;
+        }
+
+        /* Static Left Panel */
+        .sidebar {
+            height: 100%;
+            width: 350px;
+            padding: 2rem;
+            overflow-y: auto;
+            background-color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .sidebar h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar p {
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* Right Content Area */
+        .content-area {
+            margin-left: 350px; /* sidebar width */
+            width: calc(100% - 350px);
+            height: 100%;
+            overflow: auto;
+            position: relative;
+        }
+
+        /* Fixed Grid Background */
+        .content-area::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 350px;
+            z-index: 0;
+            background-image: 
+                linear-gradient(to right, #000 1px, transparent 1px),
+                linear-gradient(to bottom, #000 1px, transparent 1px);
+            background-size: 60px 60px; /* Fixed square cell size */
+            background-position: 0 0;
+            pointer-events: none;
+        }
+
+        /* Fixed 3x3 Grid Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 350px;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 0;
+            pointer-events: none;
+        }
+
+        .grid-cell {
+            /* No border */
+        }
+
+        /* Scrollable Gallery Content */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Make items square and clickable */
+        .gallery-item {
+            position: relative;
+            border: 1px solid #000;
+            background-color: white;
+            aspect-ratio: 1 / 1;
+            min-height: 200px; /* Minimum height to prevent too small squares */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Add text/numbers to the gallery items to make them more identifiable */
+        .gallery-item a {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #333;
+            font-size: 2rem;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Add white backgrounds to all items */
+        .gallery-item:nth-child(1) { background-color: #ffffff; }
+        .gallery-item:nth-child(2) { background-color: #ffffff; }
+        .gallery-item:nth-child(3) { background-color: #ffffff; }
+        .gallery-item:nth-child(4) { background-color: #ffffff; }
+        .gallery-item:nth-child(5) { background-color: #ffffff; }
+        .gallery-item:nth-child(6) { background-color: #ffffff; }
+        .gallery-item:nth-child(7) { background-color: #ffffff; }
+        .gallery-item:nth-child(8) { background-color: #ffffff; }
+        .gallery-item:nth-child(9) { background-color: #ffffff; }
+        .gallery-item:nth-child(10) { background-color: #ffffff; }
+        .gallery-item:nth-child(11) { background-color: #ffffff; }
+        .gallery-item:nth-child(12) { background-color: #ffffff; }
+        .gallery-item:nth-child(13) { background-color: #ffffff; }
+        .gallery-item:nth-child(14) { background-color: #ffffff; }
+        .gallery-item:nth-child(15) { background-color: #ffffff; }
+        .gallery-item:nth-child(16) { background-color: #ffffff; }
+        .gallery-item:nth-child(17) { background-color: #ffffff; }
+        .gallery-item:nth-child(18) { background-color: #ffffff; }
+        
+        /* Add text/numbers to the gallery items to make them more identifiable */
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- Left Sidebar (Static) -->
+    <div class="sidebar" id="sidebar">
+        <h1>Ranjani Ramakrishnan</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <!-- Right Content Area with Fixed Grid -->
+    <div class="content-area" id="content-area">
+        <!-- Fixed 3x3 Grid Overlay -->
+        <div class="grid-overlay">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+        
+        <!-- Scrollable Gallery Grid -->
+        <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item" data-id="1"><a href="project1.html" title="Project 1">1</a></div>
+            <div class="gallery-item" data-id="2"><a href="project2.html" title="Project 2">2</a></div>
+            <div class="gallery-item" data-id="3"><a href="project3.html" title="Project 3">3</a></div>
+            <div class="gallery-item" data-id="4"><a href="project4.html" title="Project 4">4</a></div>
+            <div class="gallery-item" data-id="5"><a href="project5.html" title="Project 5">5</a></div>
+            <div class="gallery-item" data-id="6"><a href="project6.html" title="Project 6">6</a></div>
+            <div class="gallery-item" data-id="7"><a href="project7.html" title="Project 7">7</a></div>
+            <div class="gallery-item" data-id="8"><a href="project8.html" title="Project 8">8</a></div>
+            <div class="gallery-item" data-id="9"><a href="project9.html" title="Project 9">9</a></div>
+            <div class="gallery-item" data-id="10"><a href="project10.html" title="Project 10">10</a></div>
+            <div class="gallery-item" data-id="11"><a href="project11.html" title="Project 11">11</a></div>
+            <div class="gallery-item" data-id="12"><a href="project12.html" title="Project 12">12</a></div>
+            <div class="gallery-item" data-id="13"><a href="project13.html" title="Project 13">13</a></div>
+            <div class="gallery-item" data-id="14"><a href="project14.html" title="Project 14">14</a></div>
+            <div class="gallery-item" data-id="15"><a href="project15.html" title="Project 15">15</a></div>
+            <div class="gallery-item" data-id="16"><a href="project16.html" title="Project 16">16</a></div>
+            <div class="gallery-item" data-id="17"><a href="project17.html" title="Project 17">17</a></div>
+            <div class="gallery-item" data-id="18"><a href="project18.html" title="Project 18">18</a></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle responsive grid sizing
+            function adjustGridSizes() {
+                const contentArea = document.getElementById('content-area');
+                const contentWidth = contentArea.offsetWidth;
+                const gallery = document.getElementById('gallery-grid');
+                
+                // Set minimum size based on available width
+                if (contentWidth < 600) {
+                    // For very small screens, we might want to drop to 2 columns
+                    gallery.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                } else {
+                    // Otherwise stick to 3 columns
+                    gallery.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                }
+                
+                // Calculate and set item size to ensure squares aren't too small
+                const items = document.querySelectorAll('.gallery-item');
+                items.forEach(item => {
+                    // Set minimum height to ensure they're not too small
+                    const minSize = Math.max(200, contentWidth / 4);
+                    item.style.minHeight = minSize + 'px';
+                });
+            }
+            
+            // Initial adjustment
+            adjustGridSizes();
+            
+            // Adjust on window resize
+            window.addEventListener('resize', adjustGridSizes);
+        });
+    </script>
+</body>
+</html>

@@ -203,9 +203,9 @@
         
         <!-- Scrollable Gallery Grid -->
         <div class="gallery-grid" id="gallery-grid">
-            <div class="gallery-item" data-id="1"><a href="project1.html" title="Project 1">1</a></div>
-            <div class="gallery-item" data-id="2"><a href="project2.html" title="Project 2">2</a></div>
-            <div class="gallery-item" data-id="3"><a href="project3.html" title="Project 3">3</a></div>
+            <div class="gallery-item" data-id="1"><a href="Gallery/project1.html" title="Project 1">1</a></div>
+            <div class="gallery-item" data-id="2"><a href="Gallery/project2.html" title="Project 2">2</a></div>
+            <div class="gallery-item" data-id="3"><a href="Gallery/project3.html" title="Project 3">3</a></div>
             <div class="gallery-item" data-id="4"><a href="project4.html" title="Project 4">4</a></div>
             <div class="gallery-item" data-id="5"><a href="project5.html" title="Project 5">5</a></div>
             <div class="gallery-item" data-id="6"><a href="project6.html" title="Project 6">6</a></div>
@@ -224,38 +224,8 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle responsive grid sizing
-            function adjustGridSizes() {
-                const contentArea = document.getElementById('content-area');
-                const contentWidth = contentArea.offsetWidth;
-                const gallery = document.getElementById('gallery-grid');
-                
-                // Set minimum size based on available width
-                if (contentWidth < 600) {
-                    // For very small screens, we might want to drop to 2 columns
-                    gallery.style.gridTemplateColumns = 'repeat(2, 1fr)';
-                } else {
-                    // Otherwise stick to 3 columns
-                    gallery.style.gridTemplateColumns = 'repeat(3, 1fr)';
-                }
-                
-                // Calculate and set item size to ensure squares aren't too small
-                const items = document.querySelectorAll('.gallery-item');
-                items.forEach(item => {
-                    // Set minimum height to ensure they're not too small
-                    const minSize = Math.max(200, contentWidth / 4);
-                    item.style.minHeight = minSize + 'px';
-                });
-            }
-            
-            // Initial adjustment
-            adjustGridSizes();
-            
-            // Adjust on window resize
-            window.addEventListener('resize', adjustGridSizes);
-        });
-    </script>
+    <script src="js/script.js"></script>
+
+
 </body>
 </html>

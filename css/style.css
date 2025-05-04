@@ -22,7 +22,7 @@ body {
    ========================================================================== */
 /* Set cursor for all elements */
 html, body {
-    cursor: url('../img/asset1.svg') 128 128, auto !important;
+    cursor: url('../img/asset1.svg') 16 16, auto !important;
 }
 
 /* Set cursor for interactive elements */
@@ -32,7 +32,7 @@ button,
 input[type="button"],
 input[type="submit"],
 .resize-handle {
-    cursor: url('../img/vector2.svg') 128 128, pointer !important;
+    cursor: url('../img/vector2.svg') 16 16, pointer !important;
 }
 
 /* ==========================================================================

@@ -15,18 +15,24 @@ body {
     display: flex;
     height: 100vh;
     overflow: hidden;
-    cursor: url('cursor.png'), auto;
 }
 
 /* ==========================================================================
-   Cursor Styles
+   Cursor Styles - CSS Only Approach
    ========================================================================== */
-a, .gallery-item {
-    cursor: url('img/Vector.png'), pointer;
+/* Set cursor for all elements */
+html, body {
+    cursor: url('../img/asset1.svg') 16 16, auto !important;
 }
 
-.custom-cursor {
-    display: none; /* Hide if using CSS cursor property */
+/* Set cursor for interactive elements */
+a, 
+.gallery-item,
+button,
+input[type="button"],
+input[type="submit"],
+.resize-handle {
+    cursor: url('../img/Vector.png') 16 16, pointer !important;
 }
 
 /* ==========================================================================
@@ -65,17 +71,19 @@ a, .gallery-item {
     width: 5px;
     height: 100%;
     background-color: #ccc;
-    cursor: col-resize;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 350px;
-    z-index: 10;
-    transition: background-color 0.2s ease;
+    z-index: 1000;
+}
+
+.resize-handle:hover {
+    background-color: #999;
 }
 
 .resize-handle.active {
-    background-color: #999;
+    background-color: #666;
 }
 
 /* ==========================================================================
@@ -138,7 +146,7 @@ a, .gallery-item {
 .gallery-item {
     position: relative;
     border: 1px solid #000;
-    background-color: #ffffff;
+    background-color: white;
     aspect-ratio: 1 / 1;
     min-height: 200px;
     overflow: hidden;

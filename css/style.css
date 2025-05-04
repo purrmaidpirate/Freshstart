@@ -23,7 +23,7 @@ body {
 /* Set cursor for all elements */
 html, body {
     /* Try all these options until one works */
-    cursor: url('https://purrmaidpirate.github.io/Freshstart/img/asset1.png') 16 16,
+    cursor: url('https://purrmaidpirate.github.io/Freshstart/img/asset1.svg') 16 16,
            auto !important;
 }
 
@@ -35,7 +35,7 @@ input[type="button"],
 input[type="submit"],
 .resize-handle {
     /* Try all these options until one works */
-    cursor: url('https://purrmaidpirate.github.io/Freshstart/img/vector2.png') 16 16, 
+    cursor: url('https://purrmaidpirate.github.io/Freshstart/img/vector2.svg') 16 16, 
            pointer !important;
 }
 
